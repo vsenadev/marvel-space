@@ -13,8 +13,6 @@ class LoginRepository:
 
         collection.insert_one(new_user.__dict__)
 
-        return jsonify({"message": "User inserted successfully."}), 201
-
     def get_user_with_login(self, login):
         collection = self.db["login"]
         response = collection.find_one({"login": login})
