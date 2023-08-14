@@ -6,25 +6,28 @@ import base64
 
 
 class LoginService:
+    login_utils = LoginUtils()
+
     def validate_user_to_insert(self, new_user):
         validate = LoginRepository().get_user_with_login(new_user['login'])
 
         if validate:
             return jsonify({"message": "User already exists in the database"}), 409
         else:
-            password = new_user["password"].encode('utf-8')
-            encrypted = bcrypt.gensalt()
-            hashed = bcrypt.hashpw(password, encrypted)
-            string_hash = base64.b64encode(hashed).decode('utf-8')
+            password = self.login_utils.encrypt_password(new_user['password'])
 
-            LoginRepository().create_user(new_user["name"], new_user["login"], new_user["email"], string_hash)
+            LoginRepository().create_user(new_user["name"], new_user["login"], new_user["email"], password)
             return jsonify({"message": "User inserted successfully."}), 201
 
     def validate_user_to_login(self, user_validate):
-        login_utils = LoginUtils()
         validate = LoginRepository().get_user_with_login(user_validate['login'])
 
         if validate:
-            return login_utils.compare_user_and_password(user_validate, validate)
+            validity = login_utils.compare_user_and_password(user_validate, validate)
+            if validity:
+                jsonify({"message": "Authenticated user"}), 200
+            else:
+                jsonify({"message": "Wrong username or password"}), 401
+
         else:
             return jsonify({"message": "User not found."}), 404
