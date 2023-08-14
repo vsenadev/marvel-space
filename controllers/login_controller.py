@@ -1,5 +1,6 @@
 from flask import request, jsonify, Blueprint
 from services.login_service import LoginService
+from services.reset_password_service import ResetPasswordService
 
 
 class LoginController:
@@ -19,3 +20,9 @@ class LoginController:
             result, status_code = LoginService().validate_user_to_login(user_request)
 
             return result, status_code
+
+    @routes_bp.route('/login/request/<string:email>', methods=['GET'])
+    def request_code(email):
+        result, status_code = ResetPasswordService.request_code(email)
+
+        return result, status_code

@@ -19,8 +19,5 @@ class ResetPasswordRepository:
             response = self.collection.insert_one(new_request.__dict__)
 
 
-    def validate_attempt(self, email):
-        return self.collection.find({ email: email })
-
     def compare_code(self, email):
 
