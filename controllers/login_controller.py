@@ -23,6 +23,6 @@ class LoginController:
 
     @routes_bp.route('/login/request/<string:email>', methods=['GET'])
     def request_code(email):
-        result, status_code = ResetPasswordService.request_code(email)
+        result, status_code = ResetPasswordService().request_code(email)
 
         return result, status_code
