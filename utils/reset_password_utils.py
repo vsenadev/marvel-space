@@ -1,3 +1,7 @@
+from utils.mail_utils import MailUtils
+
 class ResetPasswordUtils:
-    def validate_attempt(self, email):
-        return self.collection.find({email: email})
+    mail_utils = MailUtils()
+    def validate_attempt(self):
+        self.mail_utils.send_token_email()
+        # return self.collection.find({email: email})
