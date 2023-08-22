@@ -2,6 +2,7 @@ import yagmail
 import os
 from dotenv import load_dotenv
 import keyring
+from flask import jsonify
 
 dotenv_path = '.env'
 
@@ -12,19 +13,19 @@ smtp_password = os.getenv('MAIL_PASSWORD')
 
 
 class MailUtils:
-    def send_token_email(self):
+    def send_token_email(self, mail, code):
         try:
             yagmail.register(smtp_username, smtp_password)
             print(smtp_username, smtp_password)
             yag = yagmail.SMTP(smtp_username)
             yag.set_logging(yagmail.logging.DEBUG)
             yag.send(
-                to='senavinicius01@gmail.com',
-                subject='teste',
-                contents='Ola, testando'
+                to=mail,
+                subject='Código de redefinição',
+                contents=f'Seu código de autenticação é: {code}'
             )
-            print('Enviou')
+
             return True
         except Exception as error:
-            print("Erro ao enviar e-mail:", error)
+            print(error)
             return False
