@@ -1,31 +1,38 @@
-import yagmail
 import os
-from dotenv import load_dotenv
-import keyring
-from flask import jsonify
-
-dotenv_path = '.env'
-
-load_dotenv(dotenv_path)
-
-smtp_username = os.getenv('SENDER_MAIL')
-smtp_password = os.getenv('MAIL_PASSWORD')
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 
 class MailUtils:
     def send_token_email(self, mail, code):
-        try:
-            yagmail.register(smtp_username, smtp_password)
-            print(smtp_username, smtp_password)
-            yag = yagmail.SMTP(smtp_username)
-            yag.set_logging(yagmail.logging.DEBUG)
-            yag.send(
-                to=mail,
-                subject='Código de redefinição',
-                contents=f'Seu código de autenticação é: {code}'
-            )
+        template = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Seu Código de Acesso</title>
+        </head>
+        <body>
+            <p>Olá,</p>
+            <p>Aqui está o seu código de acesso: <strong>{code}</strong></p>
+            <p>Use este código para acessar o seguinte link: <strong>+++++++</strong></p>
+            <p>Atenciosamente,</p>
+            <p>Equipe de Suporte</p>
+        </body>
+        </html>
+        """
 
+        message = Mail(
+            from_email='marvelspace2099@gmail.com',
+            to_emails='senavinicius01@gmail.com',
+            subject='Sending with Twilio SendGrid is Fun',
+            html_content=template)
+        try:
+            sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+            response = sg.send(message)
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
             return True
-        except Exception as error:
-            print(error)
+        except Exception as e:
+            print(e.message)
             return False
