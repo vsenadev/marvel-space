@@ -1,5 +1,5 @@
 from run import create_mongo_client
-from model.reset_password_repository import ResetPassword
+from model.reset_password_model import ResetPassword
 from flask import jsonify
 
 
@@ -8,16 +8,17 @@ class ResetPasswordRepository:
         self.db = create_mongo_client()
         self.collection = self.db["reset"]
 
-    def create_request(self, email, code, date):
-        new_request = ResetPassword(email, code, date)
+    def create_request(self, email, code, time_limit):
+        new_request = ResetPassword(email, code, time_limit)
 
         validate = self.collection.find_one({"email": email})
 
         if validate:
             user = {"email": email}
+            date_limit = {"time_limit": time_limit}
             update = {"$set": {
                 "code": code,
-                "date": date
+                "time_limit": date_limit
             }}
             response = self.collection.update_one(user, update)
 
@@ -27,4 +28,3 @@ class ResetPasswordRepository:
 
             return response
 
-    # def compare_code(self, email):
