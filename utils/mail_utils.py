@@ -33,6 +33,5 @@ class MailUtils:
             print(response.body)
             print(response.headers)
             return True
-        except Exception as e:
-            print(e.message)
+        except Exception as error:
             return False
