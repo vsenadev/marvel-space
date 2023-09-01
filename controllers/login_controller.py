@@ -10,19 +10,29 @@ class LoginController:
     def create_user():
         if request.is_json:
             new_user = request.get_json()
-            result, status_code = LoginService().validate_user_to_insert(new_user)
-            return result, status_code
+            response, status_code = LoginService().validate_user_to_insert(new_user)
+
+            return response, status_code
 
     @routes_bp.route('/login', methods=['PUT'])
     def authenticate_user():
         if request.is_json:
             user_request = request.get_json()
-            result, status_code = LoginService().validate_user_to_login(user_request)
+            response, status_code = LoginService().validate_user_to_login(user_request)
 
-            return result, status_code
+            return response, status_code
 
-    @routes_bp.route('/login/request/<string:email>', methods=['GET'])
-    def request_code(email):
-        result, status_code = ResetPasswordService().request_code(email)
+    @routes_bp.route('/login/request/<string:mail>', methods=['GET'])
+    def request_code(mail):
 
-        return result, status_code
+        response, status_code = ResetPasswordService().request_code(mail)
+
+        return response, status_code
+
+    @routes_bp.route('/login/decode/<string:mail>', methods=['PUT'])
+    def validate_code(mail):
+        if request.is_json:
+            parameters_request = request.get_json()
+            response, status_code = ResetPasswordService().validate_code(mail, parameters_request)
+
+            return response, status_code

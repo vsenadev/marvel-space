@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a49daf82-d7ae-4190-9a2b-1f28f1d6cef8" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/reset_password_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/reset_password_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/login_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/login_controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/repositories/reset_password_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/reset_password_repository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/login_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/login_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/reset_password_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/reset_password_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/mail_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/mail_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/reset_password_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/reset_password_utils.py" afterDir="false" />
@@ -186,7 +185,9 @@
       <workItem from="1692677758655" duration="3635000" />
       <workItem from="1693280623237" duration="836000" />
       <workItem from="1693353351271" duration="9928000" />
-      <workItem from="1693446734818" duration="5312000" />
+      <workItem from="1693446734818" duration="5789000" />
+      <workItem from="1693534312921" duration="1805000" />
+      <workItem from="1693536181375" duration="3853000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -231,7 +232,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/marvel_space$app.coverage" NAME="app Coverage Results" MODIFIED="1693449142857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/marvel_space$marvel_space.coverage" NAME="marvel-space Coverage Results" MODIFIED="1693451946533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/marvel_space$marvel_space.coverage" NAME="marvel-space Coverage Results" MODIFIED="1693540386786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/marvel_space$main.coverage" NAME="main Coverage Results" MODIFIED="1693449303253" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

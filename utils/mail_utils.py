@@ -23,15 +23,13 @@ class MailUtils:
 
         message = Mail(
             from_email='marvelspace2099@gmail.com',
-            to_emails='senavinicius01@gmail.com',
+            to_emails=mail,
             subject='Sending with Twilio SendGrid is Fun',
             html_content=template)
         try:
             sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-            response = sg.send(message)
-            print(response.status_code)
-            print(response.body)
-            print(response.headers)
+            sg.send(message)
+
             return True
         except Exception as error:
             return False
