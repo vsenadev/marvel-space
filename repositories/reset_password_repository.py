@@ -8,17 +8,15 @@ class ResetPasswordRepository:
         self.db = create_mongo_client()
         self.collection = self.db["reset"]
 
-    def create_request(self, email, code, time_limit):
-        new_request = ResetPassword(email, code, time_limit)
-
-        validate = self.collection.find_one({"email": email})
+    def create_request(self, mail, code, time_limit):
+        new_request = ResetPassword(mail, code, time_limit)
+        validate = self.collection.find_one({"email": mail})
 
         if validate:
-            user = {"email": email}
-            date_limit = {"time_limit": time_limit}
+            user = {"email": mail}
             update = {"$set": {
                 "code": code,
-                "time_limit": date_limit
+                "time_limit": time_limit
             }}
             response = self.collection.update_one(user, update)
 
@@ -28,3 +26,10 @@ class ResetPasswordRepository:
 
             return response
 
+    def get_info_reset(self, mail):
+        response = self.collection.find_one({"email": mail}, {"_id": 0})
+
+        return response
+
+    def delete_request_code(self, mail):
+        self.collection.delete_one({"email": mail})
