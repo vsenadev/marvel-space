@@ -11,9 +11,9 @@ class ResetPasswordService:
 
     def request_code(self, email):
         try:
-            validate = LoginRepository().get_user_with_email(email)
+            validate_mail = LoginRepository().get_user_with_email(email)
 
-            if validate:
+            if validate_mail:
                 send_request, code = self.reset_password_utils.validate_attempt(email)
 
                 if send_request:

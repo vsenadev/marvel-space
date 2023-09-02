@@ -10,10 +10,13 @@ class LoginService:
 
     def validate_user_to_insert(self, new_user):
         try:
-            validate = LoginRepository().get_user_with_login(new_user['login'])
+            validate_login = LoginRepository().get_user_with_login(new_user['login'])
+            validate_mail = LoginRepository().get_user_with_email(new_user['email'])
 
-            if validate:
-                return jsonify({"message": "User already exists in the database"}), 409
+            if validate_login:
+                return jsonify({"message": "Username/Login already exists in the database"}), 409
+            elif validate_mail:
+                return jsonify({"message": "Mail already exists in the database"}), 409
             else:
                 password = self.login_utils.encrypt_password(new_user['password'])
 
