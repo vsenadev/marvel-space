@@ -36,3 +36,11 @@ class LoginController:
             response, status_code = ResetPasswordService().validate_code(mail, parameters_request)
 
             return response, status_code
+
+    @routes_bp.route('/login/change/password/<string:mail>', methods=['PUT'])
+    def change_password(mail):
+        if request.is_json:
+            password = request.get_json()
+            response, status_code = ResetPasswordService().change_password(mail, password)
+
+            return response, status_code

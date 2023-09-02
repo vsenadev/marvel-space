@@ -7,6 +7,7 @@ class ResetPasswordRepository:
     def __init__(self):
         self.db = create_mongo_client()
         self.collection = self.db["reset"]
+        self.collection_login = self.db["login"]
 
     def create_request(self, mail, code, time_limit):
         new_request = ResetPassword(mail, code, time_limit)
@@ -36,3 +37,13 @@ class ResetPasswordRepository:
 
     def clear_codes(self):
         self.collection.delete_many({})
+
+    def change_password(self, mail, password):
+        user = {"email": mail}
+        change = {"$set": {
+            "password": password
+        }}
+
+        response = self.collection_login.update_one(user, change)
+
+        return response
