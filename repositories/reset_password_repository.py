@@ -33,3 +33,6 @@ class ResetPasswordRepository:
 
     def delete_request_code(self, mail):
         self.collection.delete_one({"email": mail})
+
+    def clear_codes(self):
+        self.collection.delete_many({})
