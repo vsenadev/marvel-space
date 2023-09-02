@@ -1,5 +1,6 @@
 from repositories.login_repository import LoginRepository
 from utils.reset_password_utils import ResetPasswordUtils
+from utils.login_utils import LoginUtils
 from repositories.reset_password_repository import ResetPasswordRepository
 from flask import jsonify
 
@@ -8,6 +9,7 @@ class ResetPasswordService:
     def __init__(self):
         self.reset_password_utils = ResetPasswordUtils()
         self.reset_password_repository = ResetPasswordRepository()
+        self.login_utils = LoginUtils()
 
     def request_code(self, email):
         try:
@@ -41,5 +43,15 @@ class ResetPasswordService:
                 self.reset_password_repository.delete_request_code(mail)
                 return jsonify({"message": "Correct information, you will be redirected to change your password."}), 200
 
+        except Exception as error:
+            return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
+
+    def change_password(self, mail, password):
+        try:
+            password_encrypted = self.login_utils.encrypt_password(password['password'])
+
+            self.reset_password_repository.change_password(mail, password_encrypted)
+
+            return jsonify({"message": "Password update successfully."}), 200
         except Exception as error:
             return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
