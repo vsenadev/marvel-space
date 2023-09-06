@@ -10,7 +10,6 @@ class LoginRepository:
 
     def create_user(self, name, login, email, password):
         new_user = LoginModel(name, login, email, password)
-
         response = self.collection.insert_one(new_user.__dict__)
 
         return response
@@ -22,8 +21,16 @@ class LoginRepository:
 
     def get_user_with_email(self, email):
         response = self.collection.find_one({"email": email})
+
         return response
 
     def get_user_with_username(self, username):
         response = self.collection.find_one({"login": username})
+
         return response
+
+    def get_user_informations(self, mail):
+        response = self.collection.find_one({"email": mail}, {"password": 0})
+
+        return response
+
