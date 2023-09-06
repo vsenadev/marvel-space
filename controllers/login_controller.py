@@ -29,6 +29,15 @@ class LoginController:
 
         return response, status_code
 
+    @routes_bp.route('/login/informations/<string:mail>', methods=['GET'])
+    def user_informations(mail):
+
+        response, status_code = LoginService().user_informations(mail)
+
+        return response, status_code
+
+
+
     @routes_bp.route('/login/decode/<string:mail>', methods=['PUT'])
     def validate_code(mail):
         if request.is_json:

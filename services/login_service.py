@@ -40,3 +40,13 @@ class LoginService:
                 return jsonify({"message": "User not found."}), 404
         except Exception as error:
             return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
+
+    def user_informations(self, mail):
+        try:
+            user = LoginRepository().get_user_informations(mail)
+            user["_id"] = str(user["_id"])
+
+            return jsonify({"user": user}), 200
+        except Exception as error:
+            return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
+
