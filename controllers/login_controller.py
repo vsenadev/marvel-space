@@ -36,8 +36,6 @@ class LoginController:
 
         return response, status_code
 
-
-
     @routes_bp.route('/login/decode/<string:mail>', methods=['PUT'])
     def validate_code(mail):
         if request.is_json:
@@ -53,3 +51,17 @@ class LoginController:
             response, status_code = ResetPasswordService().change_password(mail, password)
 
             return response, status_code
+
+    @routes_bp.route('/login/update/user/<string:mail>', methods=['PUT'])
+    def update_user(mail):
+        if request.is_json:
+            parameters_request = request.get_json()
+            response, status_code = LoginService().update_user(mail, parameters_request)
+
+            return response, status_code
+
+    @routes_bp.route('/login/delete/<string:mail>', methods=['DELETE'])
+    def delete_user(mail):
+        response, status_code = LoginService().delete_user(mail)
+
+        return response, status_code

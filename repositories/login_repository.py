@@ -1,6 +1,8 @@
 from run import create_mongo_client
 from model.login_model import LoginModel
 from flask import jsonify
+from repositories.log_repository import LogRepository
+import datetime
 
 
 class LoginRepository:
@@ -8,29 +10,77 @@ class LoginRepository:
         self.db = create_mongo_client()
         self.collection = self.db["login"]
 
-    def create_user(self, name, login, email, password):
-        new_user = LoginModel(name, login, email, password)
-        response = self.collection.insert_one(new_user.__dict__)
+    log = LogRepository()
 
-        return response
+    def create_user(self, name, login, email, password):
+        try:
+            new_user = LoginModel(name, login, email, password)
+            response = self.collection.insert_one(new_user.__dict__)
+            return response
+        except Exception as e:
+            log_manager.log_error(f"Error creating user: {str(e)}")
+            return e
 
     def get_user_with_login(self, login):
-        response = self.collection.find_one({"login": login})
-
-        return response
+        try:
+            response = self.collection.find_one({"login": login})
+            return response
+        except Exception as e:
+            log_manager.log_error(f"Error retrieving user by login: {str(e)}")
+            return e
 
     def get_user_with_email(self, email):
-        response = self.collection.find_one({"email": email})
-
-        return response
+        try:
+            response = self.collection.find_one({"email": email})
+            return response
+        except Exception as e:
+            log_manager.log_error(f"Error retrieving user by email: {str(e)}")
+            return e
 
     def get_user_with_username(self, username):
-        response = self.collection.find_one({"login": username})
-
-        return response
+        try:
+            response = self.collection.find_one({"login": username})
+            return response
+        except Exception as e:
+            log_manager.log_error(f"Error retrieving user by username: {str(e)}")
+            return e
 
     def get_user_informations(self, mail):
-        response = self.collection.find_one({"email": mail}, {"password": 0})
+        try:
+            response = self.collection.find_one({"email": mail}, {"password": 0})
+            return response
+        except Exception as e:
+            log_manager.log_error(f"Error retrieving user information: {str(e)}")
+            return e
 
-        return response
+    def check_login(self, mail, login):
+        try:
+            response = self.collection.find_one({"login": login, "email": {"$ne": mail}})
+            return response
+        except Exception as e:
+            log_manager.log_error(f"Error checking login: {str(e)}")
+            return e
 
+    def update_user(self, mail, login, name):
+        try:
+            user = {"mail": mail}
+            update = {
+                "$set": {
+                    "login": login,
+                    "name": name
+                }
+            }
+            response = self.collection.update_one(user, update)
+            return response
+        except Exception as e:
+            log_manager.log_error(f"Error updating user: {str(e)}")
+            return e
+
+    def delete_user(self, mail):
+        try:
+            delete = {"email": mail}
+            response = self.collection.delete_one(delete)
+            return response
+        except Exception as e:
+            log_manager.log_error(f"Error deleting user: {str(e)}")
+            return e

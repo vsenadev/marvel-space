@@ -18,3 +18,4 @@ def create_mongo_client():
     database_name = "marvel"
     db = client[database_name]
     return db
+
