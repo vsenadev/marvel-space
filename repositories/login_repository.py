@@ -1,6 +1,5 @@
 from run import create_mongo_client
 from model.login_model import LoginModel
-from flask import jsonify
 from repositories.log_repository import LogRepository
 import datetime
 

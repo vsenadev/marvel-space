@@ -1,6 +1,7 @@
 from flask_cors import CORS
 from flask import Flask, Blueprint
 from controllers.login_controller import LoginController
+from controllers.character_controller import CharacterController
 from repositories.reset_password_repository import ResetPasswordRepository
 import schedule
 import threading
@@ -10,6 +11,7 @@ app = Flask(__name__)
 CORS(app)
 
 app.register_blueprint(LoginController.routes_bp)
+app.register_blueprint(CharacterController.routes_bp)
 
 
 def clear_reset_code():

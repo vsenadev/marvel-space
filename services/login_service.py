@@ -14,7 +14,7 @@ class LoginService:
             validate_mail = LoginRepository().get_user_with_email(new_user['email'])
 
             if validate_login:
-                return jsonify({"message": "Username/Login already exists in the database"}), 409
+                return jsonify({"message": "Login already exists in the database"}), 409
             elif validate_mail:
                 return jsonify({"message": "Mail already exists in the database"}), 409
             else:
