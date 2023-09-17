@@ -1,5 +1,5 @@
 from flask_cors import CORS
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, send_from_directory
 from controllers.login_controller import LoginController
 from controllers.character_controller import CharacterController
 from repositories.reset_password_repository import ResetPasswordRepository
@@ -25,6 +25,21 @@ def run_schedule():
     while True:
         schedule.run_pending()
         time.sleep(1)
+
+
+@app.route('/documentation')
+def main_page():
+    return send_from_directory('documentation', 'index.html')
+
+
+@app.route('/style')
+def style():
+    return send_from_directory('documentation/static', 'style.css')
+
+
+@app.route('/javascript')
+def javascript():
+    return send_from_directory('documentation/static', 'main.js')
 
 
 if __name__ == "__main__":
