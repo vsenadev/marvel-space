@@ -32,6 +32,11 @@ def main_page():
     return send_from_directory('documentation', 'index.html')
 
 
+@app.route('/reset')
+def reset():
+    return send_from_directory('documentation/static', 'reset.css')
+
+
 @app.route('/style')
 def style():
     return send_from_directory('documentation/static', 'style.css')
