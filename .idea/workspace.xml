@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a49daf82-d7ae-4190-9a2b-1f28f1d6cef8" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/documentation/static/reset.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/static/style.css" afterDir="false" />
     </list>
@@ -204,6 +202,7 @@
       <workItem from="1694957170871" duration="2935000" />
       <workItem from="1695097185900" duration="1494000" />
       <workItem from="1695347466208" duration="2851000" />
+      <workItem from="1695434924121" duration="1531000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
