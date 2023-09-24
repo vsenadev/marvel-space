@@ -1,0 +1,9 @@
+data = {
+    login : {
+        createUser : {
+            params : [
+                {}
+            ],
+        }
+    }
+}

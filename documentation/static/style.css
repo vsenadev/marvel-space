@@ -137,12 +137,12 @@ body{
     padding: 0 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 15px;
 }
 
 .container__content_main_section_description{
     text-align: center;
-    margin-top: 16px;
+    margin-top: 8px;
 }
 
 .container__content_main_section_div{
@@ -169,4 +169,12 @@ body{
 
 .container__content_main_section_tec{
     text-align: center;
+}
+
+a{
+    color: aqua;
+}
+
+a:visited{
+    color: aqua;
 }
