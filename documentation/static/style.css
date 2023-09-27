@@ -130,7 +130,7 @@ body{
     margin-top: 1rem;
 }
 
-.container__content_main_section{
+.container__content_main_section, .container__content_main_section_div {
     color: #FFF;
     font-family: var(--text-font);
     font-size: 1.1rem;
