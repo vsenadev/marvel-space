@@ -35,7 +35,7 @@ const data = {
         requestCode: {
             description: "This route provides users with the ability to request a verification code by email. Upon receiving a POST request containing an email address, the server performs a check. If the email is associated with an existing user, a new verification code is generated and sent to the user. Otherwise, a new user is created with the provided email, and then the verification code is generated and sent via email. This functionality is essential to ensure secure access to the application, ensuring that only authenticated or new users are allowed to receive verification codes.",
             params: [
-                { name: "mail", type: "string" },
+                { name: "mail (route param)", type: "string" },
             ],
             url: "http://192.168.100.71:3050/api/v1/login/request/string:mail",
             method: "GET",
@@ -49,7 +49,7 @@ const data = {
         userInformations: {
             description: "This route is designed to retrieve user information from the server. It accepts a GET request and returns the requested user data, typically identified by a user ID or username. This endpoint provides a read-only access to user details and is commonly used for profile retrieval and data lookup purposes.",
             params: [
-                { name: "mail", type: "string" },
+                { name: "mail (route param)", type: "string" },
             ],
             url: "http://192.168.100.71:3050/api/v1/login/informations/string:mail",
             method: "GET",
@@ -61,7 +61,7 @@ const data = {
         validateCode: {
             description: "This route validates a code against the code associated with a given email in the database. It accepts a POST request with email and code parameters, returning a response indicating whether the code is valid or not.",
             params: [
-                { name: "mail", type: "string" },
+                { name: "mail (route param)", type: "string" },
                 { name: "code", type: "string" },
             ],
             url: "http://192.168.100.71:3050/api/v1/login/decode/string:mail",
@@ -72,6 +72,47 @@ const data = {
                 { code: 200, message: "Correct information, you will be redirected to change your password." },
                 { code: 500, message: "An error has occurred" },
 
+            ],
+        },
+        changePassword: {
+            description: "This route allows users to update their passwords following a successful validation of a generated code. After validating the code and providing their email and current password, users can securely generate a hash for the new password and have it updated in the database.",
+            params: [
+                { name: "mail (route param)", type: "string" },
+                { name: "password", type: "string" },
+            ],
+            url: "http://192.168.100.71:3050/api/v1/login/change/password/string:mail",
+            method: "PUT",
+            response: [
+                { code: 200, message: "Password update successfully." },
+                { code: 500, message: "An error has occurred." },
+            ],
+        },
+        updateUser: {
+            description: "This route enables users to update their user data, such as login credentials and name, by providing their email address. Users can modify their login information and personal details through this route, ensuring their profile remains accurate and up-to-date.",
+            params: [
+                { name: "mail (route param)", type: "string" },
+                { name: "login", type: "string" },
+                { name: "name", type: "string" },
+            ],
+            url: "http://192.168.100.71:3050/api/v1/login/update/user/string:mail",
+            method: "PUT",
+            response: [
+                { code: 409, message: "Login already exists in database." },
+                { code: 200, message: "User successfully edited." },
+                { code: 500, message: "An error has occurred." }
+            ],
+        },
+        deleteUser: {
+            description: "This route, when provided with a user's email address, initiates the deletion process for that specific user from the database. It allows for the removal of a user's data, ensuring their information is permanently deleted from the system.",
+            params: [
+                { name: "mail (route param)", type: "string" }
+            ],
+            url: "http://192.168.100.71:3050/api/v1/login/delete/string:mail",
+            method: "DELETE",
+            response: [
+                { code: 400, message: "User does not exist." },
+                { code: 200, message: "Successfully deleted user." },
+                { code: 500, message: "An error has occurred." }
             ],
         }
     },
@@ -111,6 +152,18 @@ if (routeElements) {
           case "Validate Code":
             routeData = data.login.validateCode;
             routeName = "Validate Code";
+            break;
+          case "Change Password":
+            routeData = data.login.changePassword;
+            routeName = "Change Password";
+            break;
+          case "Update User":
+            routeData = data.login.updateUser;
+            routeName = "Update User";
+            break;
+          case "Delete User":
+            routeData = data.login.deleteUser;
+            routeName = "Delete User";
             break;
 z        }
 
