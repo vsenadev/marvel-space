@@ -20,7 +20,7 @@ def clear_reset_code():
     ResetPasswordRepository().clear_codes()
 
 
-schedule.every().day.at("11:15").do(clear_reset_code)
+schedule.every().day.at("23:59").do(clear_reset_code)
 
 
 def run_schedule():
