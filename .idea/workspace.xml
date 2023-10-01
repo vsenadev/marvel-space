@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a49daf82-d7ae-4190-9a2b-1f28f1d6cef8" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/controllers/documentation_controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/static/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/static/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/static/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/character_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/character_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/character_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/character_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/character_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/character_repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/login_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/login_repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/character_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/character_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,6 +214,9 @@
       <workItem from="1695781328268" duration="2187000" />
       <workItem from="1695856442246" duration="8835000" />
       <workItem from="1695949743660" duration="5622000" />
+      <workItem from="1696047670094" duration="956000" />
+      <workItem from="1696087755544" duration="2989000" />
+      <workItem from="1696125058602" duration="2350000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -257,7 +261,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/marvel_space$app.coverage" NAME="app Coverage Results" MODIFIED="1693449142857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/marvel_space$marvel_space.coverage" NAME="marvel-space Coverage Results" MODIFIED="1695954817687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/marvel_space$marvel_space.coverage" NAME="marvel-space Coverage Results" MODIFIED="1696127385482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/marvel_space$main.coverage" NAME="main Coverage Results" MODIFIED="1693449303253" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
