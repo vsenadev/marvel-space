@@ -1,6 +1,6 @@
 class CharacterModel:
     def __init__(self, name, biography, abilities_and_powers, affiliations, first_apparition, creators, image, height,
-                 width, strength, speed, durability, agility, combat_experience, recovery, intelligence, equipment):
+                 weight, strength, speed, durability, agility, combat_experience, recovery, intelligence, equipment):
         self.name = name
         self.biography = biography
         self.abilities_and_powers = abilities_and_powers
@@ -9,7 +9,7 @@ class CharacterModel:
         self.creators = creators
         self.image = image
         self.height = height
-        self.width = width
+        self.weight = weight
         self.strength = strength
         self.speed = speed
         self.durability = durability

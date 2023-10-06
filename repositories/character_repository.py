@@ -8,9 +8,9 @@ class CharacterRepository:
         self.collection = self.db["character"]
         self.log = LogRepository()
 
-    def create_character(self, name, biography, abilities_and_powers, affiliations, first_apparition, creators, image, height, width, strenght, speed, durability, agility, combat_experience, recovery, intelligence, equipment):
+    def create_character(self, name, biography, abilities_and_powers, affiliations, first_apparition, creators, image, height, weight, strenght, speed, durability, agility, combat_experience, recovery, intelligence, equipment):
         try:
-            new_character = CharacterModel(name, biography, abilities_and_powers, affiliations, first_apparition, creators, image, height, width, strenght, speed, durability, agility, combat_experience, recovery, intelligence, equipment)
+            new_character = CharacterModel(name, biography, abilities_and_powers, affiliations, first_apparition, creators, image, height, weight, strenght, speed, durability, agility, combat_experience, recovery, intelligence, equipment)
             response = self.collection.insert_one(new_character.__dict__)
 
             return response
