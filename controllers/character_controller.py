@@ -8,15 +8,15 @@ class CharacterController:
     @routes_bp.route('/api/v1/character', methods=['POST'])
     def create_character():
         if 'image' not in request.files:
-            return 'No files sent'
+            return 'No files sent', 400
 
         image = request.files['image']
 
         if image.filename == '':
-            return 'No files sent'
+            return 'No files sent', 400
 
-        if request.is_json:
-            new_character = request.get_json()
-            response, status_code = CharacterService().create_character(new_character, image)
+        form_data = request.form.to_dict()
 
-            return response, status_code
+        response, status_code = CharacterService().create_character(form_data, image)
+
+        return response, status_code
