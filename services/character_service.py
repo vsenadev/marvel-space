@@ -3,6 +3,7 @@ from flask import jsonify
 from repositories.character_repository import CharacterRepository
 import os
 import base64
+import json
 from dotenv import load_dotenv
 
 dotenv_path = '.env'
@@ -41,8 +42,20 @@ class CharacterService:
                                                        new_character['agility'],
                                                        new_character['combat_experience'],
                                                        new_character['recovery'], new_character['intelligence'],
-                                                       new_character['equipment'])
+                                                       new_character['equipment'], new_character['created_by'])
 
                 return jsonify({"message": "Character inserted successfully"}), 201
+        except Exception as error:
+            return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
+
+    def get_character(self, character_id):
+        try:
+            character = CharacterRepository().get_character(character_id)
+
+            character['abilities_and_powers'] = json.loads(character['abilities_and_powers'])
+            character['affiliations'] = json.loads(character['affiliations'])
+            character['creators'] = json.loads(character['creators'])
+
+            return jsonify({"character": character}), 200
         except Exception as error:
             return jsonify({"message": "An error has occurred: {0}".format(error)}), 500

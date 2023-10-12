@@ -20,3 +20,10 @@ class CharacterController:
         response, status_code = CharacterService().create_character(form_data, image)
 
         return response, status_code
+
+    @routes_bp.route('/api/v1/character/<string:character_id>', methods=['GET'])
+    def get_character(character_id):
+        response, status_code = CharacterService().get_character(character_id)
+
+        return response, status_code
+
