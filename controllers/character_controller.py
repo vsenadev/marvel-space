@@ -27,3 +27,9 @@ class CharacterController:
 
         return response, status_code
 
+    @routes_bp.route('/api/v1/character/filter/<string:field>', methods=['GET'])
+    def get_character_with_filter(field):
+        response, status_code = CharacterService().get_character_with_filter(field)
+
+        return response, status_code
+
