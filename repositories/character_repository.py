@@ -2,6 +2,7 @@ from run import create_mongo_client
 from model.character_model import CharacterModel
 from repositories.log_repository import LogRepository
 from bson import ObjectId
+import json
 
 
 class CharacterRepository:
@@ -36,6 +37,23 @@ class CharacterRepository:
         try:
             object_id = ObjectId(character_id)
             response = self.collection.find_one({'_id': object_id}, {'_id': 0})
+            return response
+        except Exception as e:
+            self.log.log_error(f"Error creating user: {str(e)}")
+
+    def get_character_with_filter(self, field):
+        try:
+            response = []
+            query = self.collection.find().sort(field, -1)
+
+            for find in query:
+                find['_id'] = str(find['_id'])
+                find['abilities_and_powers'] = json.loads(find['abilities_and_powers'])
+                find['affiliations'] = json.loads(find['affiliations'])
+                find['creators'] = json.loads(find['creators'])
+
+                response.append(find)
+
             return response
         except Exception as e:
             self.log.log_error(f"Error creating user: {str(e)}")
