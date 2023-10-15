@@ -57,3 +57,20 @@ class CharacterRepository:
             return response
         except Exception as e:
             self.log.log_error(f"Error creating user: {str(e)}")
+
+    def get_all_characters(self):
+        try:
+            response = []
+            query = self.collection.find()
+
+            for find in query:
+                find['_id'] = str(find['_id'])
+                find['abilities_and_powers'] = json.loads(find['abilities_and_powers'])
+                find['affiliations'] = json.loads(find['affiliations'])
+                find['creators'] = json.loads(find['creators'])
+
+                response.append(find)
+
+            return response
+        except Exception as e:
+            self.log.log_error(f"Error creating user: {str(e)}")
