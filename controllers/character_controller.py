@@ -33,3 +33,10 @@ class CharacterController:
 
         return response, status_code
 
+    @routes_bp.route('/api/v1/character', methods=['GET'])
+    def get_all_characters():
+        response, status_code = CharacterService().get_all_characters()
+
+        return response, status_code
+
+

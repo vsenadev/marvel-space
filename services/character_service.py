@@ -63,7 +63,15 @@ class CharacterService:
     def get_character_with_filter(self, field):
         try:
             characters = CharacterRepository().get_character_with_filter(field)
-            print(characters)
             return jsonify({"character": characters}), 200
         except Exception as error:
             return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
+
+    def get_all_characters(self):
+        try:
+            characters = CharacterRepository().get_all_characters()
+
+            return jsonify({"character": characters}), 200
+        except Exception as error:
+            return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
+
