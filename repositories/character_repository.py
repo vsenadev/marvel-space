@@ -37,6 +37,11 @@ class CharacterRepository:
         try:
             object_id = ObjectId(character_id)
             response = self.collection.find_one({'_id': object_id}, {'_id': 0})
+
+            response['abilities_and_powers'] = json.loads(response['abilities_and_powers'])
+            response['affiliations'] = json.loads(response['affiliations'])
+            response['creators'] = json.loads(response['creators'])
+
             return response
         except Exception as e:
             self.log.log_error(f"Error creating user: {str(e)}")
@@ -70,6 +75,20 @@ class CharacterRepository:
                 find['creators'] = json.loads(find['creators'])
 
                 response.append(find)
+
+            return response
+        except Exception as e:
+            self.log.log_error(f"Error creating user: {str(e)}")
+
+    def get_character_for_battle(self, character_id):
+        try:
+            object_id = ObjectId(character_id)
+            response = self.collection.find_one({'_id': object_id}, {'_id': 0, 'biography': 0, 'image': 0, 'first_apparition': 0, 'created_by': 0, 'creators': 0})
+
+            response['abilities_and_powers'] = json.loads(response['abilities_and_powers'])
+            response['abilities_and_powers'] = len(response['abilities_and_powers'])
+            response['affiliations'] = json.loads(response['affiliations'])
+            response['affiliations'] = len(response['affiliations'])
 
             return response
         except Exception as e:

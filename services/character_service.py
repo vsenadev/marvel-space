@@ -1,6 +1,7 @@
 import requests
 from flask import jsonify
 from repositories.character_repository import CharacterRepository
+from utils.character_utils import CharacterUtils
 import os
 import base64
 import json
@@ -52,10 +53,6 @@ class CharacterService:
         try:
             character = CharacterRepository().get_character(character_id)
 
-            character['abilities_and_powers'] = json.loads(character['abilities_and_powers'])
-            character['affiliations'] = json.loads(character['affiliations'])
-            character['creators'] = json.loads(character['creators'])
-
             return jsonify({"character": character}), 200
         except Exception as error:
             return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
@@ -75,3 +72,13 @@ class CharacterService:
         except Exception as error:
             return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
 
+    def battle(self, body):
+        try:
+            player1 = CharacterRepository().get_character_for_battle(body['player1'])
+            player2 = CharacterRepository().get_character_for_battle(body['player2'])
+
+            result = CharacterUtils().battle(player1, player2)
+
+            return jsonify({"p1": player1, "p2": player2}), 200
+        except Exception as error:
+            return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
