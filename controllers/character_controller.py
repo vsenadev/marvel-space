@@ -39,4 +39,10 @@ class CharacterController:
 
         return response, status_code
 
+    @routes_bp.route('/api/v1/character/battle', methods=['POST'])
+    def battle():
+        if request.is_json:
+            battle_body = request.get_json()
+            response, status_code = CharacterService().battle(battle_body)
 
+            return response, status_code
