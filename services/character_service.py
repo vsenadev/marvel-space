@@ -79,6 +79,6 @@ class CharacterService:
 
             result = CharacterUtils().battle(player1, player2)
 
-            return jsonify({"p1": player1, "p2": player2}), 200
+            return jsonify({"result": result}), 200
         except Exception as error:
             return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
