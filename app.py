@@ -14,6 +14,7 @@ CORS(app)
 app.register_blueprint(DocumentationController.routes_bp)
 app.register_blueprint(LoginController.routes_bp)
 app.register_blueprint(CharacterController.routes_bp)
+app.register_blueprint(QuizController.routes_bp)
 
 
 def clear_reset_code():
