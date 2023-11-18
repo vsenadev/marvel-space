@@ -9,9 +9,9 @@ class QuizRepository:
         self.collection = self.db["quiz"]
         self.log = LogRepository()
 
-    def create_user(self, name, login, email, password):
+    def create_quiz(self, name, theme, login, question_list):
         try:
-            new_user = LoginModel(name, login, email, password)
+            new_user = QuizModel(name, theme, login, question_list)
             response = self.collection.insert_one(new_user.__dict__)
             return response
         except Exception as e:

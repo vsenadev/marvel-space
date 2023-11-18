@@ -5,11 +5,11 @@ from services.quiz_service import QuizService
 class QuizController:
     routes_bp = Blueprint('routes_quiz', __name__)
 
-    @routes_bp.route('/api/v1/login', methods=['POST'])
-    def create_user():
+    @routes_bp.route('/api/v1/quiz', methods=['POST'])
+    def create_quiz():
         if request.is_json:
-            new_user = request.get_json()
-            response, status_code = LoginService().validate_user_to_insert(new_user)
+            new_quiz = request.get_json()
+            response, status_code = QuizService().insert_quiz(new_quiz)
 
             return response, status_code
 

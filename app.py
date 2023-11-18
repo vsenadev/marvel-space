@@ -3,6 +3,7 @@ from flask import Flask, Blueprint, send_from_directory
 from controllers.documentation_controller import DocumentationController
 from controllers.login_controller import LoginController
 from controllers.character_controller import CharacterController
+from controllers.quiz_controller import QuizController
 from repositories.reset_password_repository import ResetPasswordRepository
 import schedule
 import threading
