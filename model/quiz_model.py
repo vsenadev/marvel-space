@@ -1,5 +1,5 @@
-class Quiz:
-    def __init__(self, name, theme, login, questions_list):
+class QuizModel:
+    def __init__(self, name: str, theme: str, login: str, questions_list: list):
         self.name = name
         self.theme = theme
         self.login = login

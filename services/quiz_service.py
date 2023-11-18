@@ -1,4 +1,5 @@
 from repositories.quiz_repository import QuizRepository
+from repositories.login_repository import LoginRepository
 from flask import jsonify
 import bcrypt
 import base64
@@ -7,20 +8,14 @@ import base64
 class QuizService:
 
     @staticmethod
-    def validate_user_to_insert(new_user):
+    def insert_quiz(new_quiz):
         try:
-            validate_login = LoginRepository().get_user_with_login(new_user['login'])
-            validate_mail = LoginRepository().get_user_with_email(new_user['email'])
-
-            if validate_login:
-                return jsonify({"message": "Login already exists in the database"}), 409
-            elif validate_mail:
-                return jsonify({"message": "Mail already exists in the database"}), 409
+            validity = LoginRepository().get_user_with_username(new_quiz["login"])
+            if validity:
+                QuizRepository().create_quiz(new_quiz["name"], new_quiz["theme"], new_quiz["login"], new_quiz["question_list"])
+                return jsonify({"message": "Quiz inserted successfully."}), 201
             else:
-                password = LoginUtils().encrypt_password(new_user['password'])
-
-                LoginRepository().create_user(new_user["name"], new_user["login"], new_user["email"], password)
-                return jsonify({"message": "User inserted successfully."}), 201
+                return jsonify({"message": "User not found."}), 404
         except Exception as error:
             return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
 
