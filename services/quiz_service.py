@@ -20,6 +20,15 @@ class QuizService:
             return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
 
     @staticmethod
+    def get_quiz_list():
+        try:
+            quiz_list = QuizRepository().get_quiz_list()
+
+            return jsonify({"quiz": quiz_list}), 200
+        except Exception as error:
+            return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
+
+    @staticmethod
     def validate_user_to_login(user_validate):
         try:
             validate = LoginRepository().get_user_with_login(user_validate['login'])

@@ -21,10 +21,9 @@ class QuizController:
 
             return response, status_code
 
-    @routes_bp.route('/api/v1/login/request/<string:mail>', methods=['GET'])
-    def request_code(mail):
-
-        response, status_code = ResetPasswordService().request_code(mail)
+    @routes_bp.route('/api/v1/quiz/list', methods=['GET'])
+    def get_quiz_list():
+        response, status_code = QuizService().get_quiz_list()
 
         return response, status_code
 
