@@ -21,12 +21,19 @@ class QuizController:
 
             return response, status_code
 
-    @routes_bp.route('/api/v1/login/request/<string:mail>', methods=['GET'])
-    def request_code(mail):
-
-        response, status_code = ResetPasswordService().request_code(mail)
+    @routes_bp.route('/api/v1/quiz/list', methods=['GET'])
+    def get_quiz_list():
+        response, status_code = QuizService().get_quiz_list()
 
         return response, status_code
+
+    @routes_bp.route('/api/v1/quiz/make/<string:id_quiz>', methods=['PUT'])
+    def make_quiz(id_quiz):
+        if request.is_json:
+            answers = request.get_json()
+            response, status_code = QuizService().make_quiz(id_quiz, answers['response'])
+
+            return response, status_code
 
     @routes_bp.route('/api/v1/login/informations/<string:mail>', methods=['GET'])
     def user_informations(mail):
