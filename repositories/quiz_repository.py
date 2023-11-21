@@ -33,6 +33,14 @@ class QuizRepository:
         except Exception as e:
             self.log.log_error(f"Error retrieving quiz list: {str(e)}")
 
+    def get_quiz(self, id_quiz):
+        try:
+            object_id = ObjectId(id_quiz)
+            response = self.collection.find_one({"_id": object_id}, {'_id': 0, 'login': 0, 'name': 0, 'theme': 0})
+            return response
+        except Exception as e:
+            self.log.log_error(f"Error retrieving user by email: {str(e)}")
+
     def get_user_with_email(self, email):
         try:
             response = self.collection.find_one({"email": email})

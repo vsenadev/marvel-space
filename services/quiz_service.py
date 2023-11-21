@@ -28,10 +28,9 @@ class QuizService:
         except Exception as error:
             return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
 
-    @staticmethod
-    def validate_user_to_login(user_validate):
+    def make_quiz(id_quiz, response):
         try:
-            validate = LoginRepository().get_user_with_login(user_validate['login'])
+            quiz = QuizRepository().get_quiz(id_quiz)
 
             if validate:
                 validity = LoginUtils().compare_user_and_password(user_validate, validate)
