@@ -1,5 +1,6 @@
 from repositories.quiz_repository import QuizRepository
 from repositories.login_repository import LoginRepository
+from utils.quiz_utils import QuizUtils
 from flask import jsonify
 import bcrypt
 import base64
@@ -28,9 +29,12 @@ class QuizService:
         except Exception as error:
             return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
 
-    def make_quiz(id_quiz, response):
+    def make_quiz(self, id_quiz, response):
         try:
             quiz = QuizRepository().get_quiz(id_quiz)
+
+            if quiz:
+                clear_quiz = QuizUtils().validate_responses(quiz, response)
 
             if validate:
                 validity = LoginUtils().compare_user_and_password(user_validate, validate)
