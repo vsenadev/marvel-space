@@ -31,6 +31,7 @@ class QuizController:
     def make_quiz(id_quiz):
         if request.is_json:
             answers = request.get_json()
+
             response, status_code = QuizService().make_quiz(id_quiz, answers['response'])
 
             return response, status_code
