@@ -34,7 +34,7 @@ class QuizService:
             quiz = QuizRepository().get_quiz(id_quiz)
 
             if quiz:
-                clear_quiz = QuizUtils().validate_responses(quiz, response)
+                result_quiz = QuizUtils().validate_responses(quiz, response)
 
             if validate:
                 validity = LoginUtils().compare_user_and_password(user_validate, validate)
