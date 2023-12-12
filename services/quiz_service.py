@@ -29,22 +29,17 @@ class QuizService:
         except Exception as error:
             return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
 
-    def make_quiz(self, id_quiz, response):
+    def make_quiz(self, id_quiz, response, user):
         try:
             quiz = QuizRepository().get_quiz(id_quiz)
 
             if quiz:
                 result_quiz = QuizUtils().validate_responses(quiz, response)
+                insert_grade = QuizRepository().insert_result(result_quiz, user, id_quiz)
 
-            if validate:
-                validity = LoginUtils().compare_user_and_password(user_validate, validate)
-                if validity:
-                    jsonify({"message": "Authenticated user"}), 200
-                else:
-                    jsonify({"message": "Wrong username or password"}), 400
-
-            else:
-                return jsonify({"message": "User not found."}), 404
+                response = QuizRepository().get_ten_top(id_quiz)
+                print(response)
+                return jsonify({"result": result_quiz, "ten_top": response}), 200
         except Exception as error:
             return jsonify({"message": "An error has occurred: {0}".format(error)}), 500
 

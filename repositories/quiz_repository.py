@@ -2,6 +2,7 @@ import json
 from bson import ObjectId
 from run import create_mongo_client
 from model.quiz_model import QuizModel
+from model.grades_model import GradesModel
 from repositories.log_repository import LogRepository
 
 
@@ -9,6 +10,7 @@ class QuizRepository:
     def __init__(self):
         self.db = create_mongo_client()
         self.collection = self.db["quiz"]
+        self.collection_result = self.db["grades"]
         self.log = LogRepository()
 
     def create_quiz(self, name, theme, login, question_list):
@@ -40,54 +42,21 @@ class QuizRepository:
 
             return response
         except Exception as e:
-            self.log.log_error(f"Error retrieving user by email: {str(e)}")
+            self.log.log_error(f"Error retrieving quiz by id: {str(e)}")
 
-    def get_user_with_email(self, email):
+    def insert_result(self, result, user, quiz):
         try:
-            response = self.collection.find_one({"email": email})
+            new_grade = GradesModel(result, user, quiz)
+            response = self.collection_result.insert_one(new_grade.__dict__)
+            return response
+        except Exception as e:
+            self.log.log_error(f"Error insert quiz: {str(e)}")
+
+    def get_ten_top(self, id_quiz):
+        try:
+            object_id = ObjectId(id_quiz)
+            response = self.collection_result.find()
+
             return response
         except Exception as e:
             self.log.log_error(f"Error retrieving user by email: {str(e)}")
-
-    def get_user_with_username(self, username):
-        try:
-            response = self.collection.find_one({"login": username})
-            return response
-        except Exception as e:
-            self.log.log_error(f"Error retrieving user by username: {str(e)}")
-
-    def get_user_informations(self, mail):
-        try:
-            response = self.collection.find_one({"email": mail}, {"password": 0})
-            return response
-        except Exception as e:
-            self.log.log_error(f"Error retrieving user information: {str(e)}")
-
-    def check_login(self, mail, login):
-        try:
-            response = self.collection.find_one({"login": login, "email": {"$ne": mail}})
-            return response
-        except Exception as e:
-            self.log.log_error(f"Error checking login: {str(e)}")
-
-    def update_user(self, mail, login, name):
-        try:
-            user = {"mail": mail}
-            update = {
-                "$set": {
-                    "login": login,
-                    "name": name
-                }
-            }
-            response = self.collection.update_one(user, update)
-            return response
-        except Exception as e:
-            self.log.log_error(f"Error updating user: {str(e)}")
-
-    def delete_user(self, mail):
-        try:
-            delete = {"email": mail}
-            response = self.collection.delete_one(delete)
-            return response
-        except Exception as e:
-            self.log.log_error(f"Error deleting user: {str(e)}")
