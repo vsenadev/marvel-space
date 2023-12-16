@@ -34,5 +34,5 @@ def run_schedule():
 if __name__ == "__main__":
     schedule_thread = threading.Thread(target=run_schedule)
     schedule_thread.start()
-
+    DebugController = True
     app.run(host='192.168.100.71', port=3050)

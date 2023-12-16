@@ -11,6 +11,7 @@ class QuizRepository:
         self.db = create_mongo_client()
         self.collection = self.db["quiz"]
         self.collection_result = self.db["grades"]
+        self.user = self.db["login"]
         self.log = LogRepository()
 
     def create_quiz(self, name, theme, login, question_list):
@@ -54,9 +55,17 @@ class QuizRepository:
 
     def get_ten_top(self, id_quiz):
         try:
-            object_id = ObjectId(id_quiz)
-            response = self.collection_result.find()
+            response = []
+
+            query = self.collection_result.find({'quiz': id_quiz}, {'quiz': 0, '_id': 0}).sort('result', -1).limit(10)
+
+            for find in query:
+                user_object = find['user']
+
+                user = self.user.find_one({'_id': ObjectId(user_object)}, {'_id': 0, 'email': 0, 'login': 0, 'password': 0})
+                response.append({'user': user['name'], 'result': find['result']})
 
             return response
         except Exception as e:
-            self.log.log_error(f"Error retrieving user by email: {str(e)}")
+            self.log.log_error(f"Error retrieving quiz list: {str(e)}")
+
