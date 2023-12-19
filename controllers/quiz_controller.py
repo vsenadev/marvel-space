@@ -13,14 +13,6 @@ class QuizController:
 
             return response, status_code
 
-    @routes_bp.route('/api/v1/login', methods=['PUT'])
-    def authenticate_user():
-        if request.is_json:
-            user_request = request.get_json()
-            response, status_code = LoginService().validate_user_to_login(user_request)
-
-            return response, status_code
-
     @routes_bp.route('/api/v1/quiz/list', methods=['GET'])
     def get_quiz_list():
         response, status_code = QuizService().get_quiz_list()
