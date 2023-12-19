@@ -4,6 +4,7 @@ from controllers.documentation_controller import DocumentationController
 from controllers.login_controller import LoginController
 from controllers.character_controller import CharacterController
 from controllers.quiz_controller import QuizController
+from controllers.comic_controller import ComicController
 from repositories.reset_password_repository import ResetPasswordRepository
 import schedule
 import threading
@@ -16,6 +17,7 @@ app.register_blueprint(DocumentationController.routes_bp)
 app.register_blueprint(LoginController.routes_bp)
 app.register_blueprint(CharacterController.routes_bp)
 app.register_blueprint(QuizController.routes_bp)
+app.register_blueprint(ComicController.routes_bp)
 
 
 def clear_reset_code():
