@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a49daf82-d7ae-4190-9a2b-1f28f1d6cef8" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/controllers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/comic_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/comic_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repositories/comic_repository.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/comic_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/comic_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/quiz_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/quiz_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/quiz_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/quiz_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/comic_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/comic_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/comic_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/comic_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,6 +251,8 @@
       <workItem from="1702642306777" duration="325000" />
       <workItem from="1702689078468" duration="5904000" />
       <workItem from="1702948831793" duration="3266000" />
+      <workItem from="1703428423485" duration="959000" />
+      <workItem from="1703726260935" duration="1531000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
