@@ -1,7 +1,9 @@
 class ComicModel:
-    def __init__(self, title: str, issue_number: int, publication_date: str, characters: list, writers: list):
-        self.title = title
-        self.issue_number = issue_number
-        self.publication_date = publication_date
-        self.characters = characters
-        self.writers = writers
+    def __init__(self, name: str, number: int, initial_final: str, launch: str, description: str, creators: list, image: str):
+        self.name = name
+        self.number = number
+        self.initial_final = initial_final
+        self.launch = launch
+        self.description = description
+        self.creators = creators
+        self.image = image
