@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a49daf82-d7ae-4190-9a2b-1f28f1d6cef8" name="Changes" comment="update">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/comic_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/comic_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/comic_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/comic_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/comic_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/comic_repository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/comic_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/comic_service.py" afterDir="false" />
-    </list>
+    <list default="true" id="a49daf82-d7ae-4190-9a2b-1f28f1d6cef8" name="Changes" comment="update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -261,7 +253,7 @@
       <workItem from="1703428423485" duration="959000" />
       <workItem from="1703726260935" duration="1531000" />
       <workItem from="1703989705959" duration="3160000" />
-      <workItem from="1704036557266" duration="5618000" />
+      <workItem from="1704036557266" duration="5789000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -306,7 +298,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/marvel_space$app.coverage" NAME="app Coverage Results" MODIFIED="1693449142857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/marvel_space$marvel_space.coverage" NAME="marvel-space Coverage Results" MODIFIED="1704043855622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/marvel_space$marvel_space.coverage" NAME="marvel-space Coverage Results" MODIFIED="1704043924515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/marvel_space$main.coverage" NAME="main Coverage Results" MODIFIED="1693449303253" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
